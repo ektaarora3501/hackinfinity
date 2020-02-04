@@ -1,0 +1,83 @@
+<html>
+<head>
+  <title>
+    Registration form
+  </title>
+  <style>
+
+  .field{
+    color: blue;
+    align: center;
+    margin-left: 40%;
+    margin-right: auto;
+
+  }
+  .error{
+    color:red;
+  }
+
+
+.header{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  background-color: #73f8a5;
+  height:60px;
+  text-align: center;
+  font-size:40px;
+  color:white;
+
+
+  }
+
+  .home{
+  background-color: #ce93d8;
+  height:35px;
+  }
+
+  font{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size:20px;
+  }
+
+  sup{
+    color: #6A5ACD;
+  }
+
+.body{
+  margin-top: 5%;
+}
+  </style>
+</head>
+<body>
+  <div class="header">
+  </div>
+  <form action="" method="post" >
+    <div class="container">
+     <div class="body">
+    {% csrf_token %}
+  {% for field in form %}
+    <div class="row">
+       <div class="col-md-2">
+         <div class="field">
+        {{ field.label_tag }}
+         <br>{{ field }}
+        {% if field.help_text %}
+          <sup>{{ field.help_text }}</sup>
+        {% endif %}
+        <div class="error">
+        {{ field.errors }}
+      </div>
+
+       </div>
+</div>
+       </div>
+ {% endfor %}
+ <div class="field">
+   <br>
+  <input type="submit" value="Submit">
+
+</div>
+</div>
+</div>
+  </form>
+</body>
+</html>
