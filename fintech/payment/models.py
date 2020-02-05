@@ -14,3 +14,15 @@ class Register(models.Model):
 
     def __str__(self):
         return f'{self.username},{self.phoneNo},{self.first_name}'
+
+
+class PaymentModel(models.Model):
+    username = models.CharField(max_length=7)
+    amount = models.CharField(max_length=10,default=0)
+    message = models.CharField(max_length=100,null=True)
+    category = models.CharField(max_length=10)
+    date = models.CharField(max_length=10,default="")
+    time = models.CharField(max_length=10,default="time")
+
+    def __str__(self):
+        return f'{self.username},{self.message},{self.category},{self.amount}'

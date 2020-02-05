@@ -1,4 +1,4 @@
-from django.forms import forms,CharField,EmailField,PasswordInput,TimeField,DateField
+from django.forms import forms,CharField,EmailField,PasswordInput,TimeField,DateField,ChoiceField
 from payment.models import Register
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
@@ -74,3 +74,10 @@ class LoginForm(forms.Form):
 
 class VerificationForm(forms.Form):
     code=CharField(max_length=4,help_text="enter the opt sent ",label="Otp")
+
+
+class PaymentForm(forms.Form):
+    amount = CharField(max_length=100,help_text="enter the amount to pay in Rs" )
+    message = CharField(max_length=100,required=False)
+    ch=[("Others","Others"),("Food","Food"),("Shopping","Shopping")]
+    cat=ChoiceField(choices=ch,label="Category")
