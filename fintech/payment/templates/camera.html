@@ -4,9 +4,36 @@
     <meta charset="utf-8">
     <title>Page to record images</title>
   </head>
-  <body>
-    this will be the page to register users ..
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script>
 
-    <a href="{% url 'camera_record' user %}"> take picture</a>
+if(!!window.performance && window.performance.navigation.type == 2)
+    {
+       window.location.reload();
+   }
+
+
+   if(performance.navigation.type == 2){
+   location.reload(true);
+   }
+  </script>
+
+  <body onunload="">
+
+    this will be the page to register users ..
+    Press on click picture (allow webcam to take images)
+
+    click on front pictures and press 'q' when you are ready to save images<br>
+    click on sideways pictures and press 'q' when you are ready to take images<br>
+
+    <a href="{% url 'camera_record' user %}"> Front pictures</a>
+    <br>
+    <a href="{% url 'camera_sideways' user %}">Sideways pictures</a>
+
+    <br>
+    When you are satisfied press the button to get to your dashboard
+    <a href="{% url 'dashboard' val user %}">Dashboard</a>
   </body>
 </html>

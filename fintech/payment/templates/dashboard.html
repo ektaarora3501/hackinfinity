@@ -1,28 +1,196 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>dashboard</title>
-  </head>
-  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <script>
-
-if(!!window.performance && window.performance.navigation.type == 2)
-    {
-       window.location.reload();
-   }
-
-
-   if(performance.navigation.type == 2){
-   location.reload(true);
-   }
+<html>
+<head>
+  <title>
+    official page
+  </title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js">
   </script>
 
-  <body onunload="">
-    this will be user dashboard .. adding budgets and previous billings of user
+  <script>
+  if(!!window.performance && window.performance.navigation.type == 2)
+  {
+      window.location.reload();
+  }
+  </script>
+<style>
+.sidenav {
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color:#E0FFFF;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
 
-    <a href="{% url 'logout_user' user %}">Logout</a>
-  </body>
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color:  #012e69;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #7482b8;
+
+}
+
+.main {
+  margin-left: 130px; /* Same as the width of the sidenav */
+  font-size: 18px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.header{
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+background-color: #012e69;
+height:60px;
+text-align: center;
+font-size:40px;
+color:white;
+
+}
+
+
+#myDiv{
+  margin-top: 4%;
+}
+
+.arrange{
+  max-width: 40%;
+}
+
+.footer{
+  height:150px;
+  background-color:#012e69;
+  width:150%;
+  color: white;
+}
+
+#test{
+  width: 100%;
+}
+
+.show {
+   margin-right: 2%;
+   text-align: right;
+   margin-top: 1%;
+}
+
+#notify{
+  width: 100%;
+  margin-left: 70%;
+}
+
+#myDiv,#notify{
+  display: inline-block;
+}
+
+
+
+</style>
+</head>
+<body onunload="">
+  <div class="header">
+    Budget manager
+  </div>
+
+  <div class="sidenav">
+  <a href="">Main Page</a>
+  <a href="">Dashboard</a>
+  <a href="">Show reminders</a>
+  <a href="{% url 'logout_user' user %}">Logout</a>
+</div>
+<div class="main">
+  This chart shows your current month spent history
+  <table>
+    <tr>
+    <td>
+  <div id='myDiv'></div>
+  </td>
+    <td>
+    </td>
+      <td>
+      </td>
+      <td>
+    <div id="notify">
+     <div class="show">
+      {% if sts %}
+       {% for st in sts %}
+          <span>{{ st.message }}</span>
+          <span> {{ st.amount }}</span>
+          <span>{{ st.date }}</span>
+          <span>{{ st.time }}</span>
+        <br>
+       {% endfor %}
+
+      {% endif %}
+     </div>
+    </div>
+  </td>
+</tr>
+</table>
+  <script>
+{% if sts %}
+  var b=[];
+  var d=[];
+  {% for st in sts %}
+   var a=[{{ st.amount }}];
+   var b=b.concat(a);
+   var c=['{{ st.message }}'];
+   var d=d.concat(c);
+   {% endfor %}
+
+
+  var data = [{
+  values:b,
+  labels:d,
+  type: 'pie'
+  }];
+
+  var layout = {
+  height: 500,
+  width: 600,
+  };
+
+  Plotly.newPlot('myDiv', data, layout);
+
+  // var b=[];
+  // var d=[];
+  // {% for s in sp %}
+  //  var a=[{{ s.month }}];
+  //  var b=b.concat(a);
+  //  var c=[{{ s.total }}];
+  //  var d=d.concat(c);
+  //  {% endfor %}
+  //
+  //   var trace1 = {
+  //   x: b,
+  //   y: d,
+  //   type: 'scatter',
+  //   };
+  //
+  //   var layout = {
+  //   height: 500,
+  //   width: 1000,
+  //   };
+  //
+  //
+  //  data=[trace1,];
+  //  Plotly.newPlot('test', data,layout);
+
+  </script>
+
+  {% else %}
+    <div class="empty">
+      no budget to display
+    </div>
+  {% endif %}
+
+</div>
+
+</body>
 </html>
