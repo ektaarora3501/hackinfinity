@@ -74,5 +74,5 @@ def front(username):
             cap.release()
             cv2.destroyAllWindows()
 
-            sideways(username)
+            # sideways(username)
             break
