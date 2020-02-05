@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Payment details page of user</title>
+  </head>
+  <body>
+    creating amount and category form here
+    <div class="header">
+    </div>
+    <form action="" method="post" >
+      <div class="container">
+       <div class="body">
+      {% csrf_token %}
+    {% for field in form %}
+      <div class="row">
+         <div class="col-md-2">
+           <div class="field">
+          {{ field.label_tag }}
+           <br>{{ field }}
+          {% if field.help_text %}
+            <sup>{{ field.help_text }}</sup>
+          {% endif %}
+          <div class="error">
+          {{ field.errors }}
+        </div>
+
+         </div>
+  </div>
+         </div>
+   {% endfor %}
+   <div class="field">
+     <br>
+    <input type="submit" value="Submit">
+    <br>
+
+  </div>
+  </div>
+  </div>
+    </form>
+
+  </body>
+</html>
