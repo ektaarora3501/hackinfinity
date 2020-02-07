@@ -120,7 +120,7 @@ def CameraLand(request,username):
 
 
 def CameraFront(request,username):
-    if request.session.get('name')==user:
+    if request.session.get('name')==username:
 
         front(username)
         v = str(random.randrange(1000, 9999))
