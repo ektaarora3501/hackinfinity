@@ -84,7 +84,7 @@ def prediction():
                 max_index = np.argmax(predictions[0])
                 #
                 print(max_index)
-                emotions = ('ekta','sanjeev')
+                emotions = ('ekta','Sanjeev')
                 #
                 predicted_emotion = emotions[max_index]
                 print('predicted emotion',predicted_emotion)

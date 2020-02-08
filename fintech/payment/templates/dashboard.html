@@ -98,7 +98,7 @@ span{
 </head>
 <body onunload="">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Error_404 faceNotfound</a>
+    <a class="navbar-brand" href="#">Error_404 face found</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -119,6 +119,10 @@ span{
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout_user' user %}">Logout</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'assosiate_user' user %}">Add User</a>
+          </li>
         </ul>
 
     </div>
@@ -126,9 +130,6 @@ span{
   </nav>
 
 
-<div class="header">
-    Budget manager
-  </div>
 
 <div class="main">
   This chart shows your current month spent history

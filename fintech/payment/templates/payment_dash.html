@@ -4,9 +4,180 @@
     <meta charset="utf-8">
     <title>Payment Dashboard</title>
   </head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <style>
+
+  .field{
+    color: black;
+    align: left;
+    /* margin-right: 30%; */
+    margin-left: 20%;
+    font-size: 15px;
+
+  }
+  .error{
+    color:red;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 150px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#E0FFFF;
+    overflow-x: hidden;
+    padding-top: 20px;
+    margin-top: 59;
+  }
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color:  #012e69;
+    display: block;
+  }
+
+  .sidenav a:hover {
+    color: #7482b8;
+
+  }
+
+  .main {
+     /* Same as the width of the sidenav */
+    font-size: 18px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+
+  }
+
+
+
+  #myDiv{
+    margin-top: 4%;
+  }
+
+  .arrange{
+    max-width: 40%;
+  }
+
+  .footer{
+    height:150px;
+    background-color:#012e69;
+    width:150%;
+    color: white;
+  }
+
+  #test{
+    width: 100%;
+  }
+
+  span{
+    margin-left: 10%;
+  }
+
+  #notify{
+    width: 100%;
+
+  }
+
+  #myDiv,#notify{
+    display: inline-block;
+  }
+  .t3{
+    width: 100%;
+  }
+
+
+  body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+   background: linear-gradient(rgba(255,255,255,.96), rgba(255,255,255,.5)), url("/static/images/404.jpg");
+   background-repeat: no-repeat;
+   background-position: right;
+
+
+  }
+
+
+  .home{
+  background-color: #ce93d8;
+  height:35px;
+  }
+
+  font{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size:20px;
+  }
+
+  sup{
+    color: #6A5ACD;
+  }
+
+.body{
+  margin-top: 5%;
+}
+</style>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Error_404 face found</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- navbar -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <form class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav margin-right: 50%">
+        <li class="nav-item ">
+          <a class="nav-link" href="#">Home </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Show Reminders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout_user' user %}">Logout</a>
+        </li>
+      </ul>
+
+  </div>
+  </form>
+</nav>
+<br><br><br>
+
     this will be the page for the payment dashboard ..
     <br>
+
+    <div class="heading">
+    Steps for the payment ..... <br>
+  </div>
+  <br><br>
+
+  P.S. You don't have to follow long stuffs...
+  <br>
+  <ol>
+    <li>You will be guided to payment page on clicking the link below</li>
+    <li> A window will pop up (please allow your browser to use camera)</li>
+    <li> Press q when you have set your face .. </li>
+    <li>If we identify you,, You will be redirected to the otp page ...</li>
+    <li> Fill the otp and you are done !!</li>
+
+  </ol>
+
     <a href="{% url 'payment_page' %}">click here to proceed to payment</a>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
   </body>
 </html>
