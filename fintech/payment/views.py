@@ -13,6 +13,9 @@ import json
 from datetime import datetime,date
 import time
 from pytz import timezone
+
+#from tzlocal import get_localzone
+
 #from tzlocal import get_localzone
 
 # Create your views here.
