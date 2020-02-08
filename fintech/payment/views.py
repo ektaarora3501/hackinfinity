@@ -6,19 +6,20 @@ from payment.forms import SignupForm,LoginForm,VerificationForm,PaymentForm,Remi
 from django.core.exceptions import ValidationError
 from hashing import *
 import random
-from video_image import front,sideways
-from predict_final import prediction
-import requests
+#from video_image import front,sideways
+#from predict_final import prediction
+#import requests
 import json
 from datetime import datetime,date
 import time
 from pytz import timezone
-from tzlocal import get_localzone
+#from tzlocal import get_localzone
 
 # Create your views here.
 
 URL = 'https://www.sms4india.com/api/v1/sendCampaign'
 def Index(request):
+
     return render(request,'home_page.html')
 
 

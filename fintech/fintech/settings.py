@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'fintech.wsgi.application'
 DATABASES = {
      'default': {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hackin',
-        'USER': 'stephen',
-        'PASSWORD': 'aroraekta351',
+        'NAME': 'hack',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '',
     }
