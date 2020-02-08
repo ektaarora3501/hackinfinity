@@ -41,7 +41,6 @@ def Signup(request):
             us.save()
             return HttpResponseRedirect(reverse('send_otp',args=(us.phoneNo,)))
             # go for phone verification then to camera
-
     else:
         form=SignupForm()
     context={

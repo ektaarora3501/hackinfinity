@@ -21,6 +21,4 @@ urlpatterns =[
      path('payment_details/<code>/<username>',views.PaymentDetails,name="payment_details"),
      path('payment/success',views.PaymentSuccess,name="success"),
      
-
-
 ]
