@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse,reverse_lazy
 from django.http import HttpResponseRedirect
-from payment.models import Register,PaymentModel
-from payment.forms import SignupForm,LoginForm,VerificationForm,PaymentForm
+from payment.models import Register,PaymentModel,RemindModel
+from payment.forms import SignupForm,LoginForm,VerificationForm,PaymentForm,RemindForm
 from django.core.exceptions import ValidationError
 from hashing import *
 import random
@@ -12,6 +12,8 @@ import requests
 import json
 from datetime import datetime,date
 import time
+from pytz import timezone
+from tzlocal import get_localzone
 
 # Create your views here.
 
@@ -189,6 +191,61 @@ def Dashboard(request,code,user):
 
 
 
+#  setting up the reminders for bills
+# adding reminders
+def RemindUser(request,user):
+    if Register.objects.filter(username=user).exists():
+        if request.method=='POST':
+           form =RemindForm(request.POST)
+           print("post")
+
+           if form.is_valid():
+               us=RemindModel()
+               us.username=user
+               us.pay=form.cleaned_data['to_pay']
+               us.amount=form.cleaned_data['amount']
+               us.date=form.cleaned_data['date']
+               x=datetime.now()
+
+               try:
+                   us.save()
+               except:
+                   pass
+
+               return HttpResponseRedirect(reverse('show_remiders',args=(user,)))
+
+        else:
+            #proposed_date=datetime.date.today()+datetime.timedelta(weeks=3)
+
+            form=RemindForm()
+
+        context={
+        'form':form,
+
+        }
+
+        return render(request,'remind_form.html',context)
+
+    else:
+        return Login(request)
+
+
+def ShowReminders(request,user):
+    if request.session.get('name'):
+
+        data = RemindModel.objects.filter(username=user).all()
+        context={
+         'data' : data,
+         }
+        print(data)
+
+        return render(request,'show_reminders.html',context)
+
+    else:
+        return HttpResponseRedirect(reverse('Login'))
+
+
+
 def Logout(request,user):
     try:
         del request.session['name']
@@ -286,11 +343,19 @@ def PaymentDetails(request,code,username):
             today = date.today()
             us.date =  today.strftime("%d/%m/%Y")
             now = datetime.now()
+            us.date =  today.strftime("%d/%m/%Y")
+            now = datetime.now()
             us.time = now.strftime("%H:%M:%S")
+            format = "%H:%M:%S"
+            now_utc = datetime.now(timezone('UTC'))
+            print(now_utc.strftime(format))
+            # Convert to local time zone
+            now_local = now_utc.astimezone(get_localzone())
+            print(now_local.strftime(format))
 
             us.save()
 
-            return HttpResponseRedirect(reverse('index_page'))
+            return HttpResponseRedirect(reverse('success'))
 
         else:
             pass
@@ -302,3 +367,9 @@ def PaymentDetails(request,code,username):
          'form':form,
          }
         return render(request,'payment_detail.html',context)
+
+
+
+def PaymentSuccess(request):
+
+    return render(request,'success.html')        

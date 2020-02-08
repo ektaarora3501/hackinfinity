@@ -26,3 +26,15 @@ class PaymentModel(models.Model):
 
     def __str__(self):
         return f'{self.username},{self.message},{self.category},{self.amount}'
+
+
+
+class RemindModel(models.Model):
+    username=models.CharField(max_length=100)
+    pay=models.CharField(max_length=100)
+    amount=models.DecimalField(max_length=100,default=0.0,decimal_places=4,max_digits=8)
+    date= models.CharField(max_length=10,default="")
+    paid=models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.username},{self.pay},{self.amount},{self.date}"

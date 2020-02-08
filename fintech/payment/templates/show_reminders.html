@@ -1,0 +1,163 @@
+<html>
+<head>
+  <title>
+    Reminders
+  </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <style>
+  #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  }
+
+  #customers td, #customers th {
+  border: 1px solid #ddd;
+  padding:10px;
+  text-align: justify;
+
+  }
+
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+  #customers tr:hover {background-color: #ddd;}
+
+  #customers th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  background-color: #42f5ec;
+  color:#012e69;
+  }
+
+
+  nav ul {
+  text-align: right;
+
+  width: 100%;
+  background-color: #a7ffeb;
+  }
+  nav ul li {
+  display: inline-block;
+  margin: 10px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-size:20px;
+  }
+  nav ul li a {
+  color: #008080;
+  text-decoration: none;
+  }
+  nav ul li a:hover {
+  color: #9c27b0;
+  }
+
+
+  .header{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  background-color:#012e69;
+  height:50px;
+  text-align: center;
+  font-size:40px;
+  color:white;
+  }
+
+
+
+  font{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size:20px;
+  }
+
+  .add{
+  margin-left:50%;
+  font-size: 20px;
+  color: black;
+  margin-top: auto;
+  margin-bottom: 0%;
+  }
+
+  .nabvbar{
+  height: 35px;
+  background-color:white;
+  color: white;
+  }
+
+
+  .intro{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  margin-left: 5%;
+  }
+
+  .total{
+  font-size: 20px;
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  }
+
+  .logout{
+  font-size: 20px;
+  margin-left:5%;
+  }
+
+  .remind{
+  margin-right: inherit;
+  text-align: right;
+  }
+
+  .footer{
+  height:150px;
+
+  background-color:#012e69;
+  width:100%;
+  margin-top: 17%;
+  }
+
+  </style>
+
+</head>
+<script>
+if(!!window.performance && window.performance.navigation.type == 2)
+{
+    window.location.reload();
+}
+</script>
+<body onunload="">
+  <div class="header">
+    Budget manager
+  </div>
+  <div class="nabvbar">
+    <div class="add">
+  
+  </div>
+
+  </div>
+<br>
+<br><br>
+  {% if data %}
+  <table id="customers">
+    <tr>
+    <th>Message</th>
+    <th>Amount</th>
+    <th>Date</th>
+  </tr>
+     {% for us in data %}
+     <tr>
+     <td>{{ us.pay }}</td>
+     <td>{{ us.amount }}</td>
+     <td>{{ us.date }}</td>
+
+
+   </tr>
+     {% endfor %}
+    {% else %}
+     No Reminders to Set
+  {% endif %}
+
+</table>
+<!-- <div class="footer">
+</div> -->
+
+</body>
+</html>

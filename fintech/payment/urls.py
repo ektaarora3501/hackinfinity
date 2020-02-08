@@ -14,10 +14,13 @@ urlpatterns =[
      path('login',views.Login,name='login'),
      path('dashboard/<code>/<user>',views.Dashboard,name="dashboard"),
      path('logout/<user>',views.Logout,name='logout_user'),
+     path('reminders/<user>',views.RemindUser,name='remind_user'),
+     path('show/reminders/<user>',views.ShowReminders,name='show_remiders'),
      path('payment_dashboard',views.PayDashboard,name="payment_dashboard"),
      path('payment_page/usercase',views.Pay,name="payment_page"),
      path('payment_verify/<code>/<username>',views.PaymentVerify,name="payment_verify"),
      path('payment_details/<code>/<username>',views.PaymentDetails,name="payment_details"),
+     path('payment/success',views.PaymentSuccess,name="success"),
 
 
 ]

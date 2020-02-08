@@ -81,3 +81,20 @@ class PaymentForm(forms.Form):
     message = CharField(max_length=100,required=False)
     ch=[("Others","Others"),("Food","Food"),("Shopping","Shopping")]
     cat=ChoiceField(choices=ch,label="Category")
+
+    def clean_amount(self):
+        amount = self.cleaned_data['amount']
+        if(amount.isdigit()):
+            pass
+        else:
+            raise ValidationError(_("invalid amount1"))
+
+        return amount
+
+
+
+class RemindForm(forms.Form):
+    self = forms.Form
+    to_pay=CharField(max_length=100,help_text="Enter reminding information")
+    amount=CharField(max_length=8)
+    date=DateField()
