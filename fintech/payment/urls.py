@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-
 urlpatterns =[
 
      path('',views.Index,name="index_page"),
@@ -21,6 +20,7 @@ urlpatterns =[
      path('payment_verify/<code>/<username>',views.PaymentVerify,name="payment_verify"),
      path('payment_details/<code>/<username>',views.PaymentDetails,name="payment_details"),
      path('payment/success',views.PaymentSuccess,name="success"),
+     
 
 
 ]

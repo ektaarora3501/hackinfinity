@@ -48,33 +48,43 @@
   .body{
     margin-top: 5%;
   }
-    </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Error_404 faceNotfound</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- navbar -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  
-        <form class="form-inline my-2 my-lg-0">
-          <ul class="navbar-nav margin-right: 50%">
-            <li class="nav-item ">
-              <a class="nav-link" href="#">Home </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Show Reminders</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout_user' user %}">Logout</a>
-            </li>
-          </ul>
-  
+
+  sup{
+    color: #6A5ACD;
+  }
+
+.body{
+  margin-top: 5%;
+}
+  </style>
+</head>
+<body>
+  <div class="header">
+  </div>
+  {% if err %}
+  {{ err }}
+  {% endif %}
+
+<br>We have sent a otp to verify its you..
+  <br>
+  Phone no {{ ph }}
+
+  <form action="" method="post" >
+
+    <div class="container">
+     <div class="body">
+    {% csrf_token %}
+  {% for field in form %}
+    <div class="row">
+       <div class="col-md-2">
+         <div class="field">
+        {{ field.label_tag }}
+         <br>{{ field }}
+        {% if field.help_text %}
+          <sup>{{ field.help_text }}</sup>
+        {% endif %}
+        <div class="error">
+        {{ field.errors }}
       </div>
       </form>
     </nav>

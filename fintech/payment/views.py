@@ -258,20 +258,12 @@ def Logout(request,user):
     except :
           pass
     return HttpResponseRedirect(reverse('login'))
-
-
-
-
-
-
 ''' trial pages created for dummy payments..'''
 
 #payment welcome page...
 def PayDashboard(request):
 
     return render(request,'payment_dash.html')
-
-
 
 # creating payment page for prediction and sending back otp to the registered users
 
@@ -376,7 +368,4 @@ def PaymentDetails(request,code,username):
 
 def PaymentSuccess(request):
 
-    render(request,'success.html')
-    time.sleep(10)
-
-    return HttpResponseRedirect(reverse('index_page'))        
+    return render(request,'success.html')        

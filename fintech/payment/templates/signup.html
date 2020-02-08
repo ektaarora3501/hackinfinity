@@ -10,16 +10,15 @@
     <style media="screen">
 
 /* BASIC */
-
-html {
-background-color: #56baed;
-}
-
 body {
 font-family: "Poppins", sans-serif;
 height: 100vh;
+ background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/static/images/home.jpeg");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+ background-attachment: fixed;
 }
-
 a {
 color: #92badd;
 display:inline-block;
@@ -36,11 +35,7 @@ display:inline-block;
 margin: 40px 8px 10px 8px;
 color: #cccccc;
 }
-
-
-
 /* STRUCTURE */
-
 .wrapper {
 display: flex;
 align-items: center;
@@ -52,9 +47,9 @@ padding: 20px;
 }
 
 #formContent {
--webkit-border-radius: 10px 10px 10px 10px;
-border-radius: 10px 10px 10px 10px;
-background: #fff;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  -webkit-border-radius: 10px 10px 10px 10px;
 padding: 30px;
 width: 90%;
 max-width: 450px;
@@ -86,8 +81,6 @@ h2.active {
 color: #0d0d0d;
 border-bottom: 2px solid #5fbae9;
 }
-
-
 
 /* FORM TYPOGRAPHY*/
 
@@ -285,7 +278,7 @@ width:60%;
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Eror_404 faceNotfound</a>
+      <a class="navbar-brand" href="#">Eror_404 facefound</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -309,10 +302,6 @@ width:60%;
       </div>
       </form>
     </nav>
-    
-
-
-
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -338,9 +327,7 @@ width:60%;
           <br>
               <b>{{ field.label_tag }}</b></font>
                <br><div type="text" id="login" class="fadeIn second" name="login" placeholder="login">{{ field }}</div>
-              {% if field.help_text %}
-                <sup>{{ field.help_text }}</sup>
-              {% endif %}
+          
               <div class="error">
               {{ field.errors }}
             </div>
@@ -358,13 +345,8 @@ width:60%;
 
       </div>
     </div>
-
-
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-
   </body>
 </html>

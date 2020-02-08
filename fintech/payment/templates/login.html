@@ -11,13 +11,14 @@
 
 /* BASIC */
 
-html {
-background-color: #56baed;
-}
-
 body {
-font-family: "Poppins", sans-serif;
-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+ background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/static/images/home.jpeg");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;  
+ background-attachment: fixed;
 }
 
 a {
@@ -35,10 +36,8 @@ text-transform: uppercase;
 display:inline-block;
 margin: 40px 8px 10px 8px;
 color: #cccccc;
+
 }
-
-
-
 /* STRUCTURE */
 
 .wrapper {
@@ -154,9 +153,6 @@ border-bottom: 2px solid #5fbae9;
 div[type=text]:placeholder {
 color: #cccccc;
 }
-
-
-
 /* ANIMATIONS */
 
 /* Simple CSS3 Fade-in-down Animation */
@@ -285,7 +281,7 @@ width:60%;
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Eror_404 faceNotfound</a>
+      <a class="navbar-brand" href="#">Eror_404 face found</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -338,9 +334,7 @@ width:60%;
           <br>
               <b>{{ field.label_tag }}</b></font>
                <br><div type="text" id="login" class="fadeIn second" name="login" placeholder="login">{{ field }}</div>
-              {% if field.help_text %}
-                <sup>{{ field.help_text }}</sup>
-              {% endif %}
+          
               <div class="error">
               {{ field.errors }}
             </div>

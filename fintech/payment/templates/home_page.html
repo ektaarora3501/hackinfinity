@@ -4,11 +4,18 @@
     <meta charset="utf-8">
     <title>Home page for payment</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
+  <style>
+    body{
+      background:  linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)),url("/static/images/home1.jpg");
+      background-size: cover;
+    }
+  </style>
   </head>
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Eror_404 faceNotfound</a>
+  <a class="navbar-brand" href="#">Eror_404 face found</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -22,10 +29,10 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="#">login</a>
+          <a class="nav-link" href="{%url 'login'%}">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign Up</a>
+          <a class="nav-link" href="{%url 'register_user'%}">Sign Up</a>
         </li>
       </ul>
 
