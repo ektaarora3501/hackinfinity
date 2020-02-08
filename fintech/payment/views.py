@@ -372,4 +372,7 @@ def PaymentDetails(request,code,username):
 
 def PaymentSuccess(request):
 
-    return render(request,'success.html')        
+    render(request,'success.html')
+    time.sleep(10)
+
+    return HttpResponseRedirect(reverse('index_page'))        
