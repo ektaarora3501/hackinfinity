@@ -63,7 +63,7 @@ color:white;
 }
 
 .arrange{
-  max-width: 40%;
+  max-width: 20%;
 }
 
 .footer{
@@ -93,6 +93,44 @@ span{
   width: 100%;
 }
 
+table .budget{
+
+  margin-left: 20%;
+  width:50%;
+
+}
+
+
+
+#customers {
+ font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+ border-collapse: collapse;
+ width: 100%;
+}
+
+#customers td, #customers th {
+ border: 1px solid #ddd;
+ padding:10px;
+ text-align: justify;
+
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+ padding-top: 10px;
+ padding-bottom: 10px;
+ text-align: left;
+ background-color: #42f5ec;
+ color:#012e69;
+}
+
+
+
+
+
 
 </style>
 </head>
@@ -112,9 +150,6 @@ span{
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Show Reminders</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout_user' user %}">Logout</a>
@@ -145,22 +180,37 @@ span{
       <td class="t3">
     <div id="notify">
      <div class="show">
-
+     <table id="customers">
+       <tr>
+           <td></td><th><span> Spent At </span></th>
+             <td></td><th><span>Amount </span></th>
+               <td></td><th><span>Date</span></th>
+                <td></td><th><span>Time</span></th>
+       </tr>
+       <tr><br></tr><tr><br></tr>
       {% if sts %}
        {% for st in sts %}
-          <span>{{ st.message }}</span>
-          <span> {{ st.amount }}</span>
-          <span>{{ st.date }}</span>
-          <span>{{ st.time }}</span>
-        <br>
+       <tr>
+          <td></td><td><span>{{ st.message }}</span></td>
+          <td></td><td><span> {{ st.amount }}</span></td>
+          <td></td><td><span>{{ st.date }}</span></td>
+          <td></td><td><span>{{ st.time }}</span></td>
+      </tr>
        {% endfor %}
 
       {% endif %}
+    </table>
      </div>
     </div>
   </td>
 </tr>
 </table>
+
+<div class="describe">
+  Wandering what it is?
+<br> To give you exact filtering of where and how much you spend for your ease !!!
+
+</div>
   <script>
 {% if sts %}
   var b=[];
@@ -214,7 +264,8 @@ span{
 
   {% else %}
     <div class="empty">
-      no budget to display
+      Seems like you have not used us for payment yet !
+
     </div>
   {% endif %}
 

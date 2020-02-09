@@ -57,19 +57,19 @@ def Send(request, phone):
     print(v)
     value = hash_password(v)
     st = 'Here is your otp  '+v
-    # try:
-    #     req_params = {
-    #     'apikey':'HSRZ366ZERVXHAB1P4PE8DG7R1WUIOLO',
-    #     'secret':'RS0IZOGL1LUJRVTL',
-    #     'usetype':'stage',
-    #     'phone': ph,
-    #     'message':st,
-    #     'senderid':'hackpro'
-    #     }
-    #     requests.post(URL, req_params)
-    #
-    # except:
-    #     print("error in sending message")
+    try:
+        req_params = {
+        'apikey':'HSRZ366ZERVXHAB1P4PE8DG7R1WUIOLO',
+        'secret':'RS0IZOGL1LUJRVTL',
+        'usetype':'stage',
+        'phone': ph,
+        'message':st,
+        'senderid':'hackpro'
+        }
+        requests.post(URL, req_params)
+
+    except:
+        print("error in sending message")
 
     return HttpResponseRedirect(reverse('verify_phone', args=(value, phone)))
 
@@ -308,15 +308,15 @@ def Proceed(request,user):
     print(st)
     try:
         print(st)
-        # req_params = {
-        # 'apikey':'HSRZ366ZERVXHAB1P4PE8DG7R1WUIOLO',
-        # 'secret':'RS0IZOGL1LUJRVTL',
-        # 'usetype':'stage',
-        # 'phone': phone,
-        # 'message':st,
-        # 'senderid':'hackpro'
-        # }
-        # requests.post(URL, req_params)
+        req_params = {
+        'apikey':'HSRZ366ZERVXHAB1P4PE8DG7R1WUIOLO',
+        'secret':'RS0IZOGL1LUJRVTL',
+        'usetype':'stage',
+        'phone': phone,
+        'message':st,
+        'senderid':'hackpro'
+        }
+        requests.post(URL, req_params)
 
     except:
         print("error in sending message")
