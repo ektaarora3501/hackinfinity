@@ -11,9 +11,10 @@ class Register(models.Model):
     phoneNo = models.CharField(max_length = 10,default="")
     email = models.CharField(max_length=100,default='1234')
     password = models.CharField(max_length = 1000)
+    account = models.CharField(max_length=10,default="")
 
     def __str__(self):
-        return f'{self.username},{self.phoneNo},{self.first_name}'
+        return f'{self.username},{self.phoneNo},{self.first_name},{self.account},{self.email}'
 
 
 class PaymentModel(models.Model):
@@ -38,3 +39,13 @@ class RemindModel(models.Model):
 
     def __str__(self):
         return f"{self.username},{self.pay},{self.amount},{self.date}"
+
+
+
+class AssosiateModel(models.Model):
+    orguser = models.CharField(max_length=7)
+    account_no = models.CharField(max_length=10)
+    ass_user = models.CharField(max_length=7)
+
+    def __str__(self):
+        return f"{self.orguser},{self.account_no},{self.ass_user}"

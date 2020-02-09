@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse,reverse_lazy
 from django.http import HttpResponseRedirect
-from payment.models import Register,PaymentModel,RemindModel
-from payment.forms import SignupForm,LoginForm,VerificationForm,PaymentForm,RemindForm
+from payment.models import Register,PaymentModel,RemindModel,AssosiateModel
+from payment.forms import SignupForm,LoginForm,VerificationForm,PaymentForm,RemindForm,AssosiationForm
 from django.core.exceptions import ValidationError
 from hashing import *
 import random
@@ -37,6 +37,8 @@ def Signup(request):
             ps=form.cleaned_data['password']
             us.password=hash_password(ps)
             us.phoneNo=form.cleaned_data['ph']
+            us.account = form.cleaned_data['account']
+            print(us.account)
             print(us.password)
             us.save()
             return HttpResponseRedirect(reverse('send_otp',args=(us.phoneNo,)))
@@ -57,19 +59,19 @@ def Send(request, phone):
     print(v)
     value = hash_password(v)
     st = 'Here is your otp  '+v
-    try:
-        req_params = {
-        'apikey':'J37FJD9FLS9Q6LB8A6B2JKWK67SEATS4',
-        'secret':'U5LAWCSG52EVMT4K',
-        'usetype':'stage',
-        'phone': ph,
-        'message':st,
-        'senderid':'hackpro'
-        }
-        requests.post(URL, req_params)
-
-    except:
-        print("error in sending message")
+    # try:
+    #     req_params = {
+    #     'apikey':'HSRZ366ZERVXHAB1P4PE8DG7R1WUIOLO',
+    #     'secret':'RS0IZOGL1LUJRVTL',
+    #     'usetype':'stage',
+    #     'phone': ph,
+    #     'message':st,
+    #     'senderid':'hackpro'
+    #     }
+    #     requests.post(URL, req_params)
+    #
+    # except:
+    #     print("error in sending message")
 
     return HttpResponseRedirect(reverse('verify_phone', args=(value, phone)))
 
@@ -268,34 +270,53 @@ def PayDashboard(request):
 
 def Pay(request):
     username = prediction()
-    v=str(random.randrange(1000,9999))
-    value=hash_password(v)
+
+    k=[]
     try:
-        ph = Register.objects.get(username=username).phoneNo
+        user = Register.objects.get(username=username)
+        ls = list(AssosiateModel.objects.filter(ass_user=username).all())  #contains all the accounts in which user is assosiated
+        for val in ls:
+            k.append(val.orguser)
+        print(ls,user,k)
+        k.append(user.username)
+        context={
+        'k':k,
+        }
+
+        return render(request,'proceed.html',context=context)
+
     except:
         print("not recognized")
         return HttpResponseRedirect(reverse('index_page'))
+
+
+
+def Proceed(request,user):
+    v=str(random.randrange(1000,9999))
+    value=hash_password(v)
+    ph = Register.objects.get(username=user).phoneNo
+
     print(ph)
     phone = '+91'+str(ph)
     st = 'Here is your otp  '+v
+    print(st)
     try:
-        req_params = {
-        'apikey':'J37FJD9FLS9Q6LB8A6B2JKWK67SEATS4',
-        'secret':'U5LAWCSG52EVMT4K',
-        'usetype':'stage',
-        'phone': phone,
-        'message':st,
-        'senderid':'hackpro'
-        }
-        requests.post(URL, req_params)
+        print(st)
+        # req_params = {
+        # 'apikey':'HSRZ366ZERVXHAB1P4PE8DG7R1WUIOLO',
+        # 'secret':'RS0IZOGL1LUJRVTL',
+        # 'usetype':'stage',
+        # 'phone': phone,
+        # 'message':st,
+        # 'senderid':'hackpro'
+        # }
+        # requests.post(URL, req_params)
 
     except:
         print("error in sending message")
 
 
-
-
-    return HttpResponseRedirect(reverse("payment_verify",args=(value,username,)))
+    return HttpResponseRedirect(reverse("payment_verify",args=(value,user,)))
 
 
 def PaymentVerify(request,code,username):
@@ -366,4 +387,33 @@ def PaymentDetails(request,code,username):
 
 def PaymentSuccess(request):
 
-    return render(request,'success.html')        
+    render(request,'success.html')
+    time.sleep(10)
+
+    return HttpResponseRedirect(reverse('index_page'))
+
+
+def AddEUser(request,username):
+    if request.method=='POST':
+        form = AssosiationForm(request.POST)
+        if form.is_valid():
+            us = AssosiateModel()
+            us.orguser=username
+            us.ass_user = form.cleaned_data['username']
+            us.account_no = Register.objects.get(username=username).account #account no of original user..
+
+            us.save()
+            v=str(random.randrange(1000,9999))
+            value=hash_password(v)
+
+            # users added successfully
+            return HttpResponseRedirect(reverse('dashboard',args=(value,username)))
+
+    else:
+      form=AssosiationForm()
+
+    context={
+         'form':form,
+        }
+
+    return render(request,'assosiate.html',context)

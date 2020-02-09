@@ -17,8 +17,11 @@ urlpatterns =[
      path('show/reminders/<user>',views.ShowReminders,name='show_remiders'),
      path('payment_dashboard',views.PayDashboard,name="payment_dashboard"),
      path('payment_page/usercase',views.Pay,name="payment_page"),
+     path('final/payment/<user>',views.Proceed,name="proceed_pay"),
      path('payment_verify/<code>/<username>',views.PaymentVerify,name="payment_verify"),
      path('payment_details/<code>/<username>',views.PaymentDetails,name="payment_details"),
      path('payment/success',views.PaymentSuccess,name="success"),
-     
+     path('assosiate/with/<username>',views.AddEUser,name="assosiate_user"),
+
+
 ]

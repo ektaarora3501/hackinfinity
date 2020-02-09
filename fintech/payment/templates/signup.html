@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
     <title>login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <style media="screen">
 
 /* BASIC */
+
+
 body {
 font-family: "Poppins", sans-serif;
 height: 100vh;
@@ -17,8 +17,13 @@ height: 100vh;
  background-repeat: no-repeat;
  background-position: center;
  background-size: cover;
+ position: relative;
  background-attachment: fixed;
+
 }
+
+
+
 a {
 color: #92badd;
 display:inline-block;
@@ -35,7 +40,11 @@ display:inline-block;
 margin: 40px 8px 10px 8px;
 color: #cccccc;
 }
+
+
+
 /* STRUCTURE */
+
 .wrapper {
 display: flex;
 align-items: center;
@@ -47,9 +56,9 @@ padding: 20px;
 }
 
 #formContent {
-  border-radius: 10px 10px 10px 10px;
-  background: #fff;
-  -webkit-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border-radius: 10px 10px 10px 10px;
+background: #fff;
 padding: 30px;
 width: 90%;
 max-width: 450px;
@@ -81,6 +90,8 @@ h2.active {
 color: #0d0d0d;
 border-bottom: 2px solid #5fbae9;
 }
+
+
 
 /* FORM TYPOGRAPHY*/
 
@@ -277,31 +288,7 @@ width:60%;
   <body>
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Error_404 face found</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- navbar -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    
-        <form class="form-inline my-2 my-lg-0">
-          <ul class="navbar-nav margin-right: 50%">
-            <li class="nav-item ">
-              <a class="nav-link" href="{% url 'index_page' %}">Home </a>
-            </li>
-  
-            <li class="nav-item ">
-              <a class="nav-link" href="{%url 'login' %}">Login</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Sign Up</a>
-            </li>
-          </ul>
-    
-      </div>
-      </form>
-    </nav>
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -327,26 +314,23 @@ width:60%;
           <br>
               <b>{{ field.label_tag }}</b></font>
                <br><div type="text" id="login" class="fadeIn second" name="login" placeholder="login">{{ field }}</div>
-          
               <div class="error">
               {{ field.errors }}
             </div>
          <br>
       {% endfor %}
 
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="submit" class="fadeIn fourth" value="Join Us">
 
         </form>
-        <!-- Remind Passowrd -->
 
+        <!-- Remind Passowrd -->
         <div id="formFooter">
-          <a class="underlineHover" href="#">Forgot Password?</a>
+          <a class="underlineHover" href="{% url 'login' %}">Login</a>
         </div>
 
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

@@ -16,6 +16,7 @@ class SignupForm(forms.Form):
     password=CharField(widget=PasswordInput,max_length=12,help_text='Create your password')
     cnf_pass=CharField(widget=PasswordInput,max_length=12,label='confirm password')
     ph=CharField(max_length=10,label='Phone No',help_text='enter your phone no')
+    account = CharField(max_length=10,label="Account Number",widget=PasswordInput)
 
     def clean_username(self):
         us=self.cleaned_data['username']
@@ -47,6 +48,13 @@ class SignupForm(forms.Form):
             raise ValidationError(_("Phone no can contain digits only"))
         return em
 
+    def clean_account(self):
+        data = self.cleaned_data['account']
+
+        if(data.isalpha() or len(data)<10):
+            raise ValidationError(_("Invalid account number"))
+
+        return data
 
 
 
@@ -94,7 +102,20 @@ class PaymentForm(forms.Form):
 
 
 class RemindForm(forms.Form):
-    self = forms.Form
+    # self = forms.Form
     to_pay=CharField(max_length=100,help_text="Enter reminding information")
     amount=CharField(max_length=8)
     date=DateField()
+
+
+class AssosiationForm(forms.Form):
+    username = CharField(max_length=7,help_text="enter the username of assosiated user")
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        try:
+            Register.objects.get(username=username)
+        except:
+            raise ValidationError(_("the user is not registered.."))
+
+        return username
